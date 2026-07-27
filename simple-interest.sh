@@ -1,29 +1,14 @@
 #!/bin/bash
-
 # Simple Interest Calculator
-# Formula: SI = (P * R * T) / 100
 
-echo "Welcome to the Simple Interest Calculator!"
+echo "Enter Principal:"
+read principal
 
-# Ask for the Principal Amount
-echo "Enter the principal amount (P):"
-read p
+echo "Enter Rate of Interest:"
+read rate
 
-# Ask for the Annual Rate of Interest
-echo "Enter the annual rate of interest (R):"
-read r
+echo "Enter Time (in years):"
+read time
 
-# Ask for the Time Period in Years
-echo "Enter the time period in years (T):"
-read t
-
-# Calculate Simple Interest
-# We use bc for floating-point calculation if available, otherwise fallback to standard arithmetic.
-if command -v bc &> /dev/null; then
-    si=$(echo "scale=2; ($p * $r * $t) / 100" | bc)
-else
-    # Fallback to integer arithmetic
-    si=$(( (p * r * t) / 100 ))
-fi
-
-echo "The Simple Interest is: $si"
+si=$((principal * rate * time / 100))
+echo "Simple Interest = $si"
